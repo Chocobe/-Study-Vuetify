@@ -374,3 +374,42 @@ module.exports = {
 
 
 
+## 05. ``Vuetify``의 ``Grid System`` 개념
+
+UI Framework 에는 ``Grid System`` 개념을 가지고 있습니다.
+
+``Grid System``은 ``레이아웃``을 만들기 위한 규격과 사용방법을 나타냅니다.
+
+이러한 ``Grid System``을 사용하는 이유는 다음과 같습니다.
+
+1. 컨텐츠의 ``정렬``과 ``정돈``
+2. ``일관적``이고 ``규칙적인`` 디자인
+3. ``디자인 가이드``와 ``협업``에 도움
+4. 쉬운 ``반응형 디자인 설계``
+
+<br/>
+
+``Vuetify``는 Google의 ``Material Dsign``을 기반으로 하고 있습니다.
+
+> [Material Design 홈페이지: https://material.io/design/layout/responsive-layout-grid.html#columns-gutters-and-margins](https://material.io/design/layout/responsive-layout-grid.html#columns-gutters-and-margins)
+
+``Vuetify``의 ``Grid System`` 특징은 다음과 같습니다.
+
+1. ``Flex Box``를 사용하여 구축되었습니다.
+2. ``12 Column`` Grid를 사용 합니다.
+3. ``5가지 Breakpoint``를 가집니다.
+
+<br/>
+
+여기서 ``Breakpoint``는 ``종단점``의 개념으로 ``반응형 디자인``의 ``@media`` 범위를 나타냅니다.
+
+> [Vuetify Breakpoint: https://vuetifyjs.com/en/components/grids/](https://vuetifyjs.com/en/components/grids/)
+
+<img src="./readmeAssets/05-grid-system-01.png" alt="사진: Grid System" width="700px"><br/>
+
+
+
+<br/><hr/><br/>
+
+
+
