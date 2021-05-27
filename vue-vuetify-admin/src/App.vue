@@ -22,7 +22,7 @@
 				/>
 			</div>
 
-			<v-spacer></v-spacer>
+			<v-spacer />
 
 			<v-btn href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank" text>
 				<span class="mr-2">Latest Release</span>
@@ -35,12 +35,12 @@
 		<v-navigation-drawer app>
 			<v-list-item>
 				<v-list-item-content>
-					<v-list-item-title class="title"> Application </v-list-item-title>
+					<v-list-item-title class="text-h6"> Application </v-list-item-title>
 					<v-list-item-subtitle> subtext </v-list-item-subtitle>
 				</v-list-item-content>
 			</v-list-item>
 
-			<v-divider></v-divider>
+			<v-divider />
 
 			<v-list dense nav>
 				<v-list-item v-for="item in items" :key="item.title" :to="item.to" link>

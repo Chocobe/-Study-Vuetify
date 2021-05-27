@@ -280,3 +280,97 @@ export default {
 
 
 
+## 04. ``Vuetify ESLint`` 설정
+
+``Vuetify``는 ``2.x`` 기준으로 컴포넌트 사용법이 다수 변경 되었습니다.
+
+때문에 ``2.x 이상`` 버전에서 ``2.x 미만`` 문법에 대한 코딩 컨벤션이 달라지게 되는데, 이를 보정하기 위해 ``eslint-plugin-vuetify`` 를 사용 합니다.
+
+<br/>
+
+먼저 ``eslint-plugin-vuetify`` 를 설치 합니다.
+
+```bash
+$ npm i eslint-plugin-vuetify
+```
+
+<br/>
+
+설치가 완료된 후, ``.eslintrc.js``에 ``eslint-plugin-vuetify`` 설정을 추가해 줍니다.
+
+```javascript
+// .eslintrc.js
+module.exports = {
+  // ... 생략
+  extends: [
+    // ... 생략
+    
+    "plugin:vue/base",
+    // 또는 "plugin:vue/essential"
+    // 또는 "plugin:vue/recommended"
+  ],
+
+  plugins: [
+    // ... 생략
+
+    "vuetify",
+  ],
+
+  rules: {
+    // ... 생략
+
+    "vuetify/no-deprecated-classes": "error",
+  },
+};
+```
+
+<br/>
+
+위의 설정이 완료된 ``.eslintrc.js`` 파일은 다음과 같습니다.
+
+```javascript
+module.exports = {
+	root: true,
+	env: {
+		node: true,
+	},
+	extends: [
+		// "plugin:vue/essential",
+		"plugin:vue/recommended",
+		"eslint:recommended",
+		"@vue/prettier",
+	],
+	plugins: ["vuetify"],
+	parserOptions: {
+		parser: "babel-eslint",
+	},
+	rules: {
+		"no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
+		"no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+		"no-var": "error",
+		"prefer-const": "error",
+		"vuetify/no-deprecated-classes": "error",
+
+		"prettier/prettier": [
+			"error",
+			{
+				singleQuote: false,
+				semi: true,
+				useTabs: true,
+				tabWidth: 2,
+				trailingComma: "all",
+				printWidth: 100,
+				bracketSpacing: true,
+				arrowParens: "avoid",
+			},
+		],
+	},
+};
+```
+
+
+
+<br/><hr/><br/>
+
+
+
