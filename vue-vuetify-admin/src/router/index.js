@@ -12,6 +12,12 @@ const routes = [
 		path: "/grid-system",
 		component: () => import("@/views/GridSystem.vue"),
 	},
+
+	// Breakpoint
+	{
+		path: "/breakpoint",
+		component: () => import("@/views/Breakpoint.vue"),
+	},
 ];
 
 const router = new VueRouter({

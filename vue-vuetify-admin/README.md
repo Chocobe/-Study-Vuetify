@@ -280,7 +280,82 @@ export default {
 
 
 
-## 04. ``Vuetify ESLint`` 설정
+## 04. ``Hammburger 버튼`` 만들기 (메뉴버튼)
+
+``<v-navigation-drawer>`` 컴포넌트의 ``v-model`` 기본값은 ``null`` 입니다.
+
+``v-model="null"`` 일 경우, 다음과 같이 동작 합니다.
+
+1. 모바일 화면: ``v-model="true"`` 일 때, ``overlay`` 방식으로 출력됩니다.
+2. 데스트탑 화면: ``v-model="true"`` 일 때, ``Flex Item`` 방식으로 출력 됩니다. (코드 상 position: ``fixed``)
+
+> [<v-navigation-drawer>의 상태값: https://vuetifyjs.com/en/components/navigation-drawers/#usage](https://vuetifyjs.com/en/components/navigation-drawers/#usage)
+
+<br/>
+
+현재 ``<v-navigation-drawer>``의 ``v-model`` 은 설정하지 않았으므로 ``null`` 상태이며, 모바일 화면에서는 메뉴를 볼 수 없습니다.
+
+이를 해결하기 위해, ``<v-app-bar> (헤더)``에 ``<v-app-bar-nav-icon> (메뉴 아이콘)``을 만들고 ``@click`` 이벤트를 사용하여 메뉴 버튼을 구현하겠습니다.
+
+<br/>
+
+먼저 ``app.vue``의 ``<script>``에 ``isDrawer: boolean (메뉴 상태값)``을 만들고, ``toggleMenu()`` 함수를 만들어 줍니다.
+
+```html
+<script>
+export default {
+  data: () => ({
+    // ... 생략
+
+    // 메뉴 상태값
+    isDrawer: false,
+  }),
+
+  methods: {
+    // ... 생략
+
+    // 메뉴 상태값 토글 함수
+    toggleMenu() {
+      this.isDrawer = !this.isDrawer;
+    }
+  }
+}
+</script>
+```
+
+<br/>
+
+작성한 함수를 ``<v-app-bar-nav-icon>`` 의 ``@click`` 이벤트에 연결해 주고, ``isDrawer`` 상태값을 ``<v-navigation-drawer>`` 의 ``v-model``에 바인딩 시켜 줍니다.
+
+```html
+<template>
+  <v-app>
+    <v-app-bar app color="primary" dark>
+      <!-- 🐫 @click 이벤트에 toggleMenu() 함수 바인딩 -->
+      <v-app-bar-nav-icon @click="toggleMenu"></v-app-bar-nav-icon>
+    </v-app-bar>
+
+    <!-- 🐫 v-model에 isDrawer 상태값 바인딩 -->
+    <v-navigation-drawer v-model="isDrawer" app>
+      <!-- ... 생략 ... -->
+    </v-navigation-drawer>
+  </v-app>>
+</template>
+```
+
+<br/>
+
+작성 후, 로컬 서버를 실행하면 메뉴 버튼이 동작하는 것을 볼 수 있습니다.
+
+<img src="./readmeAssets/04-menu-button-01.gif" alt="사진: 메뉴버튼" width="700px"><br/>
+
+
+
+<br/><hr/><br/>
+
+
+
+## 05. ``Vuetify ESLint`` 설정
 
 ``Vuetify``는 ``2.x`` 기준으로 컴포넌트 사용법이 다수 변경 되었습니다.
 
@@ -374,7 +449,7 @@ module.exports = {
 
 
 
-## 05. ``Vuetify``의 ``Grid System`` 개념
+## 06. ``Vuetify``의 ``Grid System`` 개념
 
 UI Framework 에는 ``Grid System`` 개념을 가지고 있습니다.
 
@@ -406,6 +481,350 @@ UI Framework 에는 ``Grid System`` 개념을 가지고 있습니다.
 > [Vuetify Breakpoint: https://vuetifyjs.com/en/components/grids/](https://vuetifyjs.com/en/components/grids/)
 
 <img src="./readmeAssets/05-grid-system-01.png" alt="사진: Grid System" width="700px"><br/>
+
+<br/>
+
+위의 가이드에 따르면 ``md`` 스펙의 Viewport에서는 ``하나의 Row``에 ``12개 Column``이 존재 합니다.
+
+만약 ``md`` Viewport일 때, 12개의 Column 중, ``4개 Column`` 만큼 영역을 할당 하려면, 해당 ``v-col``의 ``md``속성으로 지정할 수 있습니다.
+
+```html
+<v-row>
+  <v-col md="4">
+    <!-- ... 생략 ... --->
+  </v-col>
+</v-row>
+```
+
+<br/>
+
+위의 예시를 사용하여, ``md``개수별 예시를 만들면 다음과 같습니다.
+
+```html
+<template>
+	<div>
+		<h1><span class="yellow">md</span> Breakpoint 테스트</h1>
+
+		<v-container fluid>
+			<v-row class="pink">
+				<v-col md="12">
+					<v-card class="pa-3" outlined> md: 12 </v-card>
+				</v-col>
+			</v-row>
+
+			<v-row class="blue">
+				<v-col md="10">
+					<v-card class="pa-3" outlined> md: 10 </v-card>
+				</v-col>
+			</v-row>
+
+			<v-row class="green">
+				<v-col md="8">
+					<v-card class="pa-3" outlined> md: 8 </v-card>
+				</v-col>
+			</v-row>
+
+			<v-row class="pink">
+				<v-col md="6">
+					<v-card class="pa-3"> md: 6 </v-card>
+				</v-col>
+			</v-row>
+
+			<v-row class="blue">
+				<v-col md="4">
+					<v-card class="pa-3" outlined> md: 4 </v-card>
+				</v-col>
+			</v-row>
+
+			<v-row class="green">
+				<v-col md="2">
+					<v-card class="pa-3" outlined> md: 2 </v-card>
+				</v-col>
+			</v-row>
+		</v-container>
+	</div>
+</template>
+```
+
+<img src="./readmeAssets/05-grid-system-02.png" alt="사진: Breakpoint" width="700px"><br/>
+
+<br/>
+
+
+
+<br/><hr/><br/>
+
+
+
+## 07. ``Grid System``으로 배치되는 ``v-row`` 와 ``v-col``
+
+위에서 설명한 ``Grid System`` 개념이 반영된 컴포넌트는 다음과 같습니다.
+
+1. ``v-container``
+      * 컴텐츠의 폭을 나타내며, 웹사이트의 컨텐츠를 중앙에 배치합니다.
+
+2. ``v-row``
+      * Grid의 ``Row`` 역할을 하며, ``v-col``을 하위 컴포넌트로 가집니다. 
+      * ``v-col`` 컴포넌트의 ``레이아웃 제어`` 기능을 가집니다.
+
+3. ``v-col``
+      * 화면에 출력할 실제 컨텐츠 (v-card 등)을 하위 컴포넌트로 가집니다.
+      * ``v-row``의 하위 컴포넌트로 위치해야 합니다.
+
+4. ``v-spacer``
+      * 컴포넌트간 간격을 만들어 줍니다.
+
+<br/>
+
+위의 요소들을 사용하면 다음과 같이 사용할 수 있습니다.
+
+```html
+<template>
+	<div>
+		<v-container fluid>
+			<!-- v-row, v-col 테스트 -->
+			<h1 class="mb-3">v-row, v-col</h1>
+			<v-row>
+				<v-col>
+					<v-card class="pa-3" outlined> Column 0 - 0 </v-card>
+				</v-col>
+
+				<v-col>
+					<v-card class="pa-3" outlined> Column 0 - 1 </v-card>
+				</v-col>
+
+				<v-col>
+					<v-card class="pa-3" outlined> Column 0 - 2 </v-card>
+				</v-col>
+			</v-row>
+
+			<v-row>
+				<v-col>
+					<v-card class="pa-3" outlined> Column 1 - 0 </v-card>
+				</v-col>
+
+				<v-col>
+					<v-card class="pa-3" outlined> Column 1 - 1 </v-card>
+				</v-col>
+
+				<v-col>
+					<v-card class="pa-3" outlined> Column 1 - 2 </v-card>
+				</v-col>
+			</v-row>
+		</v-container>
+
+		<!-- v-space 테스트 -->
+		<h1 class="mt-3">v-space</h1>
+
+		<v-card class="mt-5 pa-3" outlined>
+			<v-row>
+				<v-col>
+					<v-card class="pa-3" outlined> Column 2 - 0 </v-card>
+				</v-col>
+
+				<v-spacer></v-spacer>
+
+				<v-col>
+					<v-card class="pa-3" outlined> Column 2 - 1 </v-card>
+				</v-col>
+
+				<v-col>
+					<v-card class="pa-3" outlined> Column 2 - 2 </v-card>
+				</v-col>
+			</v-row>
+
+			<v-row>
+				<v-spacer></v-spacer>
+
+				<v-col>
+					<v-card class="pa-3" outlined> Column 3 - 0 </v-card>
+				</v-col>
+
+				<v-col>
+					<v-card class="pa-3" outlined> Column 3 - 1 </v-card>
+				</v-col>
+
+				<v-col>
+					<v-card class="pa-3" outlined> Column 3 - 2 </v-card>
+				</v-col>
+			</v-row>
+		</v-card>
+  </div>
+</template>
+```
+
+<br/>
+
+<img src="./readmeAssets/05-grid-system-03.png" alt="사진: Grid System 컴포넌트" width="700px"><br/>
+
+
+
+<br/><hr/><br/>
+
+
+
+## 08. ``v-row`` 와 ``v-col``의 ``justify-content``, ``align-items``, ``align-self`` 설정
+
+``v-row``는 ``Flex Box`` 속성을 가지고 있고, ``v-col``은 ``Flex Item`` 속성을 가지고 있습니다.
+
+따라서, ``flex``의 하위속성인 ``justify-content``와 ``align-items``를 설정할 수 있습니다.
+
+<br/>
+
+``justify-content``와 ``align-items``는 ``Flex Box``의 하위 속성이므로, ``v-row``에서 설정할 수 있습니다.
+
+```html
+<v-row justify="start"></v-row>
+
+<v-row justify="center"></v-row>
+
+<v-row justify="end"></v-row>
+
+<v-row justify="space-between"></v-row>
+
+<v-row justify="space-around"></v-row>
+```
+
+<br/>
+
+```html
+<v-row align="start"></v-row>
+
+<v-row align="center"></v-row>
+
+<v-row align="end"></v-row>
+```
+
+<br/>
+
+```html
+<v-row style="height: 150px">
+  <v-col align-self="start"></v-col>
+</v-row>
+
+<v-row style="height: 150px">
+  <v-col align-self="center"></v-col>
+</v-row>
+
+<v-row style="height: 150px">
+  <v-col align-self="end"></v-col>
+</v-row>
+```
+
+<br/>
+
+위의 예시를 사용하면 다음과 같습니다.
+
+```html
+<template>
+	<div>
+		<!-- align 속성 테스트 -->
+		<h1 class="mt-5">align 속성</h1>
+
+		<v-card class="mt-5 pa-3" outlined>
+			<v-row class="green" style="height: 150px">
+				<v-col>
+					<v-card class="pa-3" outlined>align: start</v-card>
+				</v-col>
+
+				<v-col>
+					<v-card class="pa-3" outlined>align: start</v-card>
+				</v-col>
+
+				<v-col>
+					<v-card class="pa-3" outlined>align: start</v-card>
+				</v-col>
+			</v-row>
+
+			<v-row class="pink" style="height: 150px" align="end">
+				<v-col>
+					<v-card class="pa-3" outlined>align: end</v-card>
+				</v-col>
+
+				<v-col>
+					<v-card class="pa-3" outlined>align: end</v-card>
+				</v-col>
+
+				<v-col>
+					<v-card class="pa-3" outlined>align: end</v-card>
+				</v-col>
+			</v-row>
+
+			<v-row class="purple" style="height: 150px" align="center">
+				<v-col>
+					<v-card class="pa-3"> align: center </v-card>
+				</v-col>
+
+				<v-col>
+					<v-card class="pa-3"> align: center </v-card>
+				</v-col>
+
+				<v-col>
+					<v-card class="pa-3"> align: center </v-card>
+				</v-col>
+			</v-row>
+		</v-card>
+
+		<!-- align-self 테스트 -->
+		<h1 class="mt-5">align-self 테스트</h1>
+
+		<v-card class="pa-3" outlined>
+			<v-row class="cyan" style="height: 150px">
+				<v-col align-self="start">
+					<v-card class="pa-3"> align-self: start </v-card>
+				</v-col>
+
+				<v-col align-self="end">
+					<v-card class="pa-3" outlined> align-self: end </v-card>
+				</v-col>
+
+				<v-col align-self="center">
+					<v-card class="pa-3" outlined> align-self: center </v-card>
+				</v-col>
+			</v-row>
+		</v-card>
+
+		<!-- justify 테스트 -->
+		<h1 class="mt-5">justify 테스트</h1>
+
+		<v-card class="mt-5 pa-3">
+			<v-row class="green" justify="start">
+				<v-col md="4">
+					<v-card class="pa-3"> justify: start </v-card>
+				</v-col>
+
+				<v-col md="4">
+					<v-card class="pa-3"> justify: start </v-card>
+				</v-col>
+			</v-row>
+
+			<v-row class="pink" justify="end">
+				<v-col md="4">
+					<v-card class="pa-3" outlined> justify: end </v-card>
+				</v-col>
+
+				<v-col md="4">
+					<v-card class="pa-3" outlined> justify: end </v-card>
+				</v-col>
+			</v-row>
+
+			<v-row class="purple" justify="center">
+				<v-col md="4">
+					<v-card class="pa-3" outlined> justify: center </v-card>
+				</v-col>
+
+				<v-col md="4">
+					<v-card class="pa-3" outlined> justify: center </v-card>
+				</v-col>
+			</v-row>
+		</v-card>
+	</div>
+</template>
+```
+
+<br/>
+
+<img src="./readmeAssets/08-justify-align-01.png" alt="사진: justify, align" width="700px"><br/>
 
 
 

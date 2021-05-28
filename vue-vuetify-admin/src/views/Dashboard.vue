@@ -1,6 +1,8 @@
 <template>
 	<div>
-		<h1>Dashboard</h1>
+		<v-container fluid>
+			<v-card class="pa-3"> Dashboard </v-card>
+		</v-container>
 	</div>
 </template>
 
