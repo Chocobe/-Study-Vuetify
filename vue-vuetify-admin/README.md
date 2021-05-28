@@ -42,6 +42,63 @@ Vuetify의 기본 Layout은 ``app`` 속성으로 설정할 수 있습니다.
 
 <img src="./readmeAssets/01-layout-01.png" alt="사진: Layout" width="700px"><br/>
 
+<br/>
+
+``Vuetify`` 프로젝트를 구성하는 ``Layout`` 컴포넌트는 다음과 같습니다.
+
+* ``<v-app>``
+    * 프로젝트의 ``Root`` 컴포넌트 입니다.
+    * 프로그램이 실행될 때, ``진입점`` 역할을 합니다.
+
+* ``<v-app-bar app>``
+    * ``Header`` 컴포넌트 입니다.
+
+* ``<v-navigation-drawer app>``
+    * 좌측 메뉴 컴포넌트 입니다.
+
+* ``<v-footer app>``
+    * 푸터 컴포넌트 입니다.
+
+* ``<v-main>``
+    * 프로젝트상의 컨텐츠 영역 전체 Wrapper 컴포넌트 입니다.
+    * 브라우저 랜더링 시, ``<main>`` 태그로 치환됩니다.
+
+* ``<v-container>``
+    * 실제 컨텐츠 Wrapper 컴포넌트 입니다.
+
+<br/>
+
+위의 ``Layout``은 프로젝트 최상위 컴포넌트인 ``App.vue``에 작성해야 합니다.
+
+```html
+<!-- App.vue -->
+
+<template>
+  <v-app>
+    <!-- 헤더 컴포넌트 -->
+    <v-app-bar app>
+      <!-- v-app의 구성요소로써 동작하기 위해, "app" 속성 할당 -->
+    </v-app-bar>
+
+    <!-- 메뉴 컴포넌트 -->
+    <v-navigation-drawer app>
+      <!-- v-app의 구성요소로써 동작하기 위해, "app" 속성 할당 -->
+    </v-navigation-drawer>
+
+    <!-- main 컴포넌트 -->
+    <v-main>
+      <v-container>
+        <!-- 컨텐츠 영역 -->
+      </v-container>
+    </v-main>
+
+    <v-footer app>
+      <!-- v-app의 구성요소로써 동작하기 위해, "app" 속성 할당 -->
+    </v-footer>
+  </v-app>
+</template>
+```
+
 
 
 <br/><hr/><br/>
