@@ -1096,3 +1096,93 @@ Heading 1: text-sm-h1
 
 
 
+## 11. Color
+
+``Vuetify``는 ``Material Design`` 스타일을 기반으로 합니다.
+
+> [Material Design: https://material.io/design/color/the-color-system.html#color-usage-and-palettes](https://material.io/design/color/the-color-system.html#color-usage-and-palettes)
+
+<br/>
+
+따라서 ``Vuetify``에서도 ``Material Design``의 색상을 그대로 사용할 수 있습니다.
+
+> [Colors: https://vuetifyjs.com/en/styles/colors/#material-colors](https://vuetifyjs.com/en/styles/colors/#material-colors)
+
+<br/>
+
+위의 색상은 ``Style Class``에 ``색상명``으로 사용할 수 있습니다.
+
+```html
+<p class="red lighten-1">
+  배경색: Red 의 lighten-1 색상
+</p>
+```
+
+<br/>
+
+위의 색상 사용법은 ``배경색``으로 사용된 방식이며, ``텍스트 색상``으로 사용하고자 한다면, 다음과 같이 사용할 수 있습니다.
+
+```bash
+색상명--text
+```
+
+```html
+<p class="red--text">
+  텍스트색: Reg
+</p>
+```
+
+<br/>
+
+기존 CSS에서도 텍스트 색에는 ``Alpha``값을 사용할 수 없듯이, 텍스트색에 ``lighten`` 또는 ``darken``은 사용할 수 없습니다.
+
+<br/>
+
+``Vuetify``에는 ``Theme``에 대한 값이 설정되어 있고, ``Theme``에서 정의한 색상은 특수한 이름을 가지고 있습니다.
+
+* primary: 메인 색상
+* secondary: 보조 색상
+* accent: 강조 색상
+* error: 에러 상태 색상
+* info: 인포 색상
+* success: 성공 상태 색상
+* warning: 경고 상태 색상
+
+<br/>
+
+위의 색상은 기본값을 가지고 있는데, 이를 커스터마이징 하기 위해서는 ``Vuetify`` 인스턴스 생성부에서 Override 할 수 있습니다. (Vuetify ``Presets`` 값 변경)
+
+> [Presets: https://vuetifyjs.com/en/features/presets/#default-preset](https://vuetifyjs.com/en/features/presets/#default-preset)
+
+<br/>
+
+```javascript
+import Vue from "vue";
+import Vuetify from "vuetify/lib/framework";
+
+Vue.use(Vuetify);
+
+export default new Vuetify({
+	breakpoint: {
+		// mobileBreakpoint: "xs",
+	},
+
+  // 테마 속성
+	theme: {
+		themes: {
+			light: {
+				primary: "#FF9800",
+				secondary: "#EA80FC",
+        // ...생략
+			},
+		},
+	},
+});
+```
+
+
+
+<br/><hr/><br/>
+
+
+
