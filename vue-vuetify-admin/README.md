@@ -1059,3 +1059,40 @@ export default new Vuetify({
 
 
 
+## 11. Typography
+
+``Vuetify`` 에서는 테스트에 대한 ``Helper Class`` 를 제공 합니다.
+
+> [Typography: https://vuetifyjs.com/en/styles/text-and-typography/](https://vuetifyjs.com/en/styles/text-and-typography/)
+
+<br/>
+
+``Typograph``를 적용할 태그에 ``Style Class``를 사용하면 적용 되며, 특정 Viewport 이상에서만 적용되는 ``Helper Class``도 사용할 수 있습니다.
+
+위의 공식문서에서 제공하는 ``Helper Class``는 ``Base`` 와 ``Value``로 분리할 수 있습니다.
+
+```bash
+Heading 1: text-h1
+  "Base": text
+  "Value": h1
+```
+
+여기에 ``sm`` Viewport 이상에서만 적용되는 ``Helper Class``를 사용한다면, ``Base`` 와 ``Value`` 사이에 ``Breakpoint``를 추가하여 사용할 수 있습니다.
+
+```bash
+Heading 1: text-sm-h1
+  "Base": text
+  "Breakpoint": sm
+  "Value": h1
+```
+
+<br/>
+
+위와 같은 형식으로 모든 ``Typography``를 사용할 수 있습니다.
+
+
+
+<br/><hr/><br/>
+
+
+

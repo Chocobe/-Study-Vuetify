@@ -65,6 +65,11 @@ export default {
 				icon: "mdi-image",
 				to: "/breakpoint",
 			},
+			{
+				title: "Typography",
+				icon: "mdi-image",
+				to: "/typography",
+			},
 
 			{
 				title: "Breakpoint2",

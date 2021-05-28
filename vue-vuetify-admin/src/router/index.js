@@ -20,6 +20,10 @@ const routes = [
 		path: "/breakpoint",
 		component: () => import("@/views/Breakpoint.vue"),
 	},
+	{
+		path: "/typography",
+		component: () => import("@/views/Typography.vue"),
+	},
 
 	// Breakpoint2
 	{
