@@ -6,9 +6,8 @@ module.exports = {
 	extends: [
 		// "plugin:vue/essential",
 		"plugin:vue/recommended",
-    "eslint:recommended",
+		"eslint:recommended",
 		"@vue/prettier",
-    
 	],
 	plugins: ["vuetify"],
 	parserOptions: {
@@ -20,7 +19,7 @@ module.exports = {
 		"no-var": "error",
 		"prefer-const": "error",
 		"vuetify/no-deprecated-classes": "error",
-    "vuetify/no-legacy-grid": "error",
+		"vuetify/no-legacy-grid": "error",
 
 		"prettier/prettier": [
 			"error",
@@ -30,7 +29,7 @@ module.exports = {
 				useTabs: true,
 				tabWidth: 2,
 				trailingComma: "all",
-				printWidth: 100,
+				printWidth: 80,
 				bracketSpacing: true,
 				arrowParens: "avoid",
 			},

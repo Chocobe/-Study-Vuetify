@@ -60,11 +60,16 @@ export default {
 				icon: "mdi-view-dashboard",
 				to: "/grid-list-page",
 			},
-
 			{
 				title: "Breakpoint",
-				icon: "mdi-help-box",
+				icon: "mdi-image",
 				to: "/breakpoint",
+			},
+
+			{
+				title: "Breakpoint2",
+				icon: "mdi-help-box",
+				to: "/breakpoint2",
 			},
 		],
 		right: null,

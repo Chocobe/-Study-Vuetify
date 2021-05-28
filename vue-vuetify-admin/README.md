@@ -956,3 +956,106 @@ UI Framework 에는 ``Grid System`` 개념을 가지고 있습니다.
 
 
 
+## 10. ``Breakpoint Service Object``
+
+``Breakpoint`` 에 대한 상태값을 가진 객체를 말합니다.
+
+각 Viewport 별로 동작되는 상태값을 나타내며, 직접 커스터마이징도 가능 합니다.
+
+> [``Breakpoint Service Object``: https://vuetifyjs.com/en/features/breakpoints/#breakpoint-service-object](https://vuetifyjs.com/en/features/breakpoints/#breakpoint-service-object)
+
+<br/>
+
+``Breakpoint Service Object``의 접근 경로는 다음과 같습니다.
+
+```javascript
+this.$vuetify.breakpoint
+```
+
+<br/>
+
+```javascript
+this.$vuetify.breakpoint: {
+  // Breakpoints 상태값
+  // 현재 Viewport가 Breakpoint에 해당할 경우, "true"
+  xs: boolean
+  sm: boolean
+  md: boolean
+  lg: boolean
+  xl: boolean
+
+  // Conditionals 상태값
+  //Breakpoints 의 범위형 상태값
+  xsOnly: boolean // xs 일 경우, "true"
+  smOnly: boolean // sm 일 경우, "true"
+  smAndDown: boolean // sm 이하일 경우, "true"
+  smAndUp: boolean // sm 이상일 경우, "true"
+  mdOnly: boolean // md 일 경우, "true"
+  mdAndDown: boolean // md 이하일 경우, "true"
+  mdAndUp: boolean // md 이상일 경우, "true"
+  lgOnly: boolean // lg 일 경우, "true"
+  lgAndDown: boolean // lg 이하일 경우, "true"
+  lgAndUp: boolean // lg 이상일 경우, "true"
+  xlOnly: boolean // xl 일 경우, "true"
+
+  // true if screen width < mobileBreakpoint
+  // 모바일 Viewport에 대한 상태값
+  mobile: boolean
+  // 모바일에 해당하는 Breakpoint
+  mobileBreakpoint: number
+
+  // Current breakpoint name (e.g. 'md')
+  // 현재 Breakpoint 명
+  name: string
+
+  // Dimensions
+  // 현재 Viewport 크기값
+  height: number
+  width: number
+
+  // Thresholds
+  // Configurable through options
+  // 각 Breakpoint의 기준값
+  {
+    xs: number
+    sm: number
+    md: number
+    lg: number
+  }
+
+  // Scrollbar
+  scrollBarWidth: number
+}
+```
+
+<br/>
+
+만약, 위의 Breakpoint 값을 ``변경`` 하고자 하면, ``Vuetify`` 컴포넌트 생성자에서 Override할 수 있습니다.
+
+```javascript
+// 경로: @/plugins/vuetify.js
+
+import Vue from "vue";
+import Vuetify from "vuetify/lib/framework";
+
+Vue.use(Vuetify);
+
+export default new Vuetify({
+	breakpoint: {
+    // 모바일 Breakpoint를 "sm"로 변경
+		mobileBreakpoint: "sm",
+
+    thresholds: {
+      // "xs" Breakpoint 기준값을 "500px"로 변경
+      xs: 500,
+    },
+	},
+});
+```
+
+
+
+<br/><hr/><br/>
+
+
+
