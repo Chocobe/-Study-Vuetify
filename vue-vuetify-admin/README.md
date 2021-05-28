@@ -832,3 +832,70 @@ UI Framework 에는 ``Grid System`` 개념을 가지고 있습니다.
 
 
 
+## 09. ``v-col``의 ``cols`` 속성과 ``Breakpoint``
+
+``v-col``은 ``v-row``에서 몇개의 ``Column`` 영역을 가질 것인지 설정할 수 있습니다.
+
+이 설정이 ``cols`` 입니다.
+
+``cols``에 설정한 ``Column 개수``는 ``xs`` Breakpoint에서 Column 개수이며, ``cols="auto"``를 설정할 경우에는 ``v-col``의 컨텐츠 크기만큼만 영역을 차지하게 됩니다.
+
+<br/>
+
+``v-col``의 ``cols`` 속성을 사용하면 다음과 같습니다.
+
+```html
+<template>
+	<div>
+		<!-- cols 개수 설정 -->
+		<h1>cols 개수 설정</h1>
+
+		<v-container class="mt-3" fluid>
+			<v-row>
+				<template v-for="i in 12">
+					<v-col :key="i" cols="12" sm="6" md="4" lg="3">
+						<v-card class="pa-3"> Column {{ i }} </v-card>
+					</v-col>
+				</template>
+			</v-row>
+		</v-container>
+
+		<!-- cols="auto" 설정 -->
+		<h1 class="mt-5">cols="auto" 설정</h1>
+
+		<v-container class="mt-3" fluid>
+			<v-row>
+				<template v-for="i in 12">
+					<v-col :key="i" cols="auto">
+						<v-card class="pa-3" outlined> Column {{ i }} </v-card>
+					</v-col>
+				</template>
+			</v-row>
+		</v-container>
+
+		<!-- Breakpoint 별 cols 설정 -->
+		<h1 class="mt-5">Breakpoint 별 cols 설정</h1>
+
+		<v-container class="mt-3" fluid>
+			<v-row>
+				<template v-for="i in 12">
+					<v-col :key="i" cols="2" sm="6" md="4" lg="3" xl="1">
+						<v-card class="pa-3"> Column {{ i }} </v-card>
+					</v-col>
+				</template>
+			</v-row>
+		</v-container>
+	</div>
+</template>
+```
+
+<br/>
+
+<img src="./readmeAssets/09-cols-01.png" alt="사진: cols 속성" width="700px"><br/>
+
+
+
+<br/><hr/><br/>
+
+
+

@@ -79,9 +79,14 @@ export default {
 				to: "/",
 			},
 			{
-				title: "GridSystem",
+				title: "Grid System",
 				icon: "mdi-image",
 				to: "/grid-system",
+			},
+			{
+				title: "Grid List Page",
+				icon: "mdi-view-dashboard",
+				to: "/grid-list-page",
 			},
 
 			{

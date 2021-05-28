@@ -12,6 +12,10 @@ const routes = [
 		path: "/grid-system",
 		component: () => import("@/views/GridSystem.vue"),
 	},
+	{
+		path: "/grid-list-page",
+		component: () => import("@/views/GridListPage.vue"),
+	},
 
 	// Breakpoint
 	{
