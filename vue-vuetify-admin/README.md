@@ -1186,3 +1186,27 @@ export default new Vuetify({
 
 
 
+## 12. Helper Class
+
+``UI Framework``는 자조 사용하는 스타일을 ``Helper Class``로 제공 합니다.
+
+``Vuetify`` 역시 ``Helper Class``를 제공하며, UI Framework가 ``깨지는 현상``을 막기 위해서 ``필히 사용``해야 합니다.
+
+<br/>
+
+``Helper Class``는 지금까지 사용했던 ``ma-3``, ``pa-3``, ``primary``, ``secondary`` 등 과 같은 ``Style Class`` 입니다.
+
+해당 내용은 공식 홈페이지의 ``Styles and animations`` 카테고리로 안내하고 있습니다.
+
+> [Styles and animations: https://vuetifyjs.com/en/styles/css-reset/](https://vuetifyjs.com/en/styles/css-reset/)
+
+<br/>
+
+<img src="./readmeAssets/12-helper-class-01.png" alt="사진: Styles and animations" width="700px"><br/>
+
+
+
+<br/><hr/><br/>
+
+
+
