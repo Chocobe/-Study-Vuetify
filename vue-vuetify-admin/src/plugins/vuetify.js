@@ -1,7 +1,13 @@
 import Vue from "vue";
 import Vuetify from "vuetify/lib/framework";
 
+import colors from "vuetify/lib/util/colors";
+
 Vue.use(Vuetify);
+
+const theme = {
+	primary: colors.deepOrange,
+};
 
 export default new Vuetify({
 	breakpoint: {
@@ -10,10 +16,8 @@ export default new Vuetify({
 
 	theme: {
 		themes: {
-			light: {
-				primary: "#FF9800",
-				secondary: "#EA80FC",
-			},
+			light: theme,
+			dark: theme,
 		},
 	},
 });

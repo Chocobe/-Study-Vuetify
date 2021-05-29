@@ -1398,3 +1398,66 @@ Vuetify에서는 사용자 입력용 컴포넌트를 ``Form`` 카테고리에 �
 
 
 
+## 17. Sparklines
+
+Vuetify의 ``라인 차트`` 컴포넌트 입니다.
+
+> [Sparklines: https://vuetifyjs.com/en/components/sparklines/](https://vuetifyjs.com/en/components/sparklines/)
+
+<br/>
+
+```html
+<template>
+  <v-sparkline
+    :value="value"
+    :gradient="gradient"
+    :smooth="radius || false"
+    :padding="padding"
+    :line-width="width"
+    :stroke-linecap="lineCap"
+    :gradient-direction="gradientDirection"
+    :fill="fill"
+    :type="type"
+    :auto-line-width="autoLineWidth"
+    auto-draw
+  ></v-sparkline>
+</template>
+
+<script>
+  const gradients = [
+    ['#222'],
+    ['#42b3f4'],
+    ['red', 'orange', 'yellow'],
+    ['purple', 'violet'],
+    ['#00c6ff', '#F0F', '#FF0'],
+    ['#f72047', '#ffd200', '#1feaea'],
+  ]
+
+  export default {
+    data: () => ({
+      width: 2,
+      radius: 10,
+      padding: 8,
+      lineCap: 'round',
+      gradient: gradients[5],
+      value: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0],
+      gradientDirection: 'top',
+      gradients,
+      fill: false,
+      type: 'trend',
+      autoLineWidth: false,
+    }),
+  }
+</script>
+```
+
+<br/>
+
+<img src="./readmeAssets/17-sparkline-01.png" alt="사진: Sparkline" width="700px"><br/>
+
+
+
+<br/><hr/><br/>
+
+
+
