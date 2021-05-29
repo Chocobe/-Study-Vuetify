@@ -1210,3 +1210,191 @@ export default new Vuetify({
 
 
 
+## 13. Component: Data Table
+
+Vuetify의 ``데이터 테이블`` 컴포넌트 입니다.
+
+> [Data Table: https://vuetifyjs.com/en/components/data-tables/](https://vuetifyjs.com/en/components/data-tables/)
+
+```html
+<template>
+  <v-data-table
+    :headers="headers"
+    :items="desserts"
+    :items-per-page="5"
+    class="elevation-1"
+  ></v-data-table>
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+        headers: [
+          {
+            text: 'Dessert (100g serving)',
+            align: 'start',
+            sortable: false,
+            value: 'name',
+          },
+          { text: 'Calories', value: 'calories' },
+          { text: 'Fat (g)', value: 'fat' },
+          { text: 'Carbs (g)', value: 'carbs' },
+          { text: 'Protein (g)', value: 'protein' },
+          { text: 'Iron (%)', value: 'iron' },
+        ],
+        desserts: [
+          {
+            name: 'Frozen Yogurt',
+            calories: 159,
+            fat: 6.0,
+            carbs: 24,
+            protein: 4.0,
+            iron: '1%',
+          },
+          {
+            name: 'Ice cream sandwich',
+            calories: 237,
+            fat: 9.0,
+            carbs: 37,
+            protein: 4.3,
+            iron: '1%',
+          },
+          {
+            name: 'Eclair',
+            calories: 262,
+            fat: 16.0,
+            carbs: 23,
+            protein: 6.0,
+            iron: '7%',
+          },
+          {
+            name: 'Cupcake',
+            calories: 305,
+            fat: 3.7,
+            carbs: 67,
+            protein: 4.3,
+            iron: '8%',
+          },
+          {
+            name: 'Gingerbread',
+            calories: 356,
+            fat: 16.0,
+            carbs: 49,
+            protein: 3.9,
+            iron: '16%',
+          },
+          {
+            name: 'Jelly bean',
+            calories: 375,
+            fat: 0.0,
+            carbs: 94,
+            protein: 0.0,
+            iron: '0%',
+          },
+          {
+            name: 'Lollipop',
+            calories: 392,
+            fat: 0.2,
+            carbs: 98,
+            protein: 0,
+            iron: '2%',
+          },
+          {
+            name: 'Honeycomb',
+            calories: 408,
+            fat: 3.2,
+            carbs: 87,
+            protein: 6.5,
+            iron: '45%',
+          },
+          {
+            name: 'Donut',
+            calories: 452,
+            fat: 25.0,
+            carbs: 51,
+            protein: 4.9,
+            iron: '22%',
+          },
+          {
+            name: 'KitKat',
+            calories: 518,
+            fat: 26.0,
+            carbs: 65,
+            protein: 7,
+            iron: '6%',
+          },
+        ],
+      }
+    },
+  }
+</script>
+```
+
+<img src="./readmeAssets/13-data-table-01.png" alt="사진: Data Table" width="700px"><br/>
+
+
+
+<br/><hr/><br/>
+
+
+
+## 14. Button
+
+Vuetify의 ``버튼`` 컴포넌트 입니다.
+
+```html
+<template>
+  <v-btn class="primary">Primary</v-btn>
+</template>
+```
+
+<br/>
+
+<img src="./readmeAssets/14-button-01.png" alt="사진: Button" width="700px"><br/>
+
+
+
+<br/><hr/><br/>
+
+
+
+## 15. Icon
+
+Vuetify의 ``아이콘`` 컴포넌트 입니다.
+
+```html
+<v-icon color="primary">mdi-account</v-icon>
+```
+
+<br/>
+
+``아이콘`` 컴포넌트는 ``Material Design Icons``가 기본으로 설치되어 있습니다.
+
+> [Material Design Icons: https://materialdesignicons.com/](https://materialdesignicons.com/)
+
+검색한 아이콘은 ``mdi`` 를 ``Prefix``로 하여, ``kebab-case`` 로 작성하여 사용할 수 있습니다.
+
+* 검색한 아이콘: "mdiAccount"
+* <v-icon>mdi-account</v-icon>
+
+<br/>
+
+<img src="./readmeAssets/15-icon-01.png" alt="사진: Icon" width="700px"><br/>
+
+
+
+## 16. Form
+
+Vuetify에서는 사용자 입력용 컴포넌트를 ``Form`` 카테고리에 안내하고 있습니다.
+
+> 메뉴: [UI Components > Form inputs & controls](https://vuetifyjs.com/en/components/autocompletes/#usage)
+
+<img src="./readmeAssets/16-form-01.png" alt="사진: Form" width="700px"><br/>
+
+
+
+<br/><hr/><br/>
+
+
+
