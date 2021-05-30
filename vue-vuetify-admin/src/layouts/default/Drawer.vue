@@ -1,6 +1,6 @@
 <template>
 	<v-navigation-drawer
-		v-model="isDrawer"
+		v-bind="$attrs"
 		app
 		dark
 		src="../../assets/image/moon-menu.jpg"
@@ -9,46 +9,24 @@
 			<v-img v-bind="imgProps" :gradient="gradient"></v-img>
 		</template>
 
-		<v-list-item>
-			<v-list-item-content>
-				<v-list-item-title class="text-h6"> Application </v-list-item-title>
-				<v-list-item-subtitle> subtext </v-list-item-subtitle>
-			</v-list-item-content>
-		</v-list-item>
+		<DefaultDrawerHeader></DefaultDrawerHeader>
 
 		<v-divider />
 
-		<v-list dense nav>
-			<v-list-item
-				v-for="item in items"
-				:key="item.title"
-				:to="item.to"
-				link
-				:class="{ purple: item.myCustom }"
-				:active-class="item.myCustom ? 'blue' : 'primary'"
-				class="py-1"
-			>
-				<v-list-item-icon>
-					<v-icon>{{ item.icon }}</v-icon>
-				</v-list-item-icon>
-
-				<v-list-item-content>
-					<v-list-item-title>{{ item.title }}</v-list-item-title>
-				</v-list-item-content>
-			</v-list-item>
-		</v-list>
+		<DefaultDrawerList :items="items"></DefaultDrawerList>
 	</v-navigation-drawer>
 </template>
 
 <script>
+import DefaultDrawerHeader from "@/layouts/default/DrawerHeader.vue";
+import DefaultDrawerList from "@/layouts/default/DrawerList.vue";
+
 export default {
 	name: "DefaultDrawer",
 
-	props: {
-		isDrawer: {
-			type: Boolean,
-			required: true,
-		},
+	components: {
+		DefaultDrawerHeader,
+		DefaultDrawerList,
 	},
 
 	data: () => {
@@ -62,6 +40,36 @@ export default {
 					title: "Dashboard",
 					icon: "mdi-view-dashboard",
 					to: "/",
+				},
+				{
+					title: "Pages",
+					icon: "mdi-menu",
+					items: [
+						// Authentication
+						{
+							title: "Authentication",
+							icon: "mdi-security",
+							items: [
+								{
+									title: "SignIn",
+									icon: "mdi-login-variant",
+									to: "/authentication/signin",
+								},
+								{
+									title: "SignUp",
+									icon: "mdi-clipboard-account-outline",
+									to: "/authentication/signup",
+								},
+							],
+						},
+
+						// Page
+						{
+							title: "ProductList",
+							icon: "mdi-inbox-full",
+							to: "/page/product-list",
+						},
+					],
 				},
 				{
 					title: "Grid System",
@@ -116,25 +124,6 @@ export default {
 					icon: "mdi-share-variant-outline",
 					to: "/slot-props",
 					myCustom: true,
-				},
-
-				// Authentication
-				{
-					title: "SignIn",
-					icon: "mdi-login-variant",
-					to: "/authentication/signin",
-				},
-				{
-					title: "SignUp",
-					icon: "mdi-clipboard-account-outline",
-					to: "/authentication/signup",
-				},
-
-				// Page
-				{
-					title: "ProductList",
-					icon: "mdi-inbox-full",
-					to: "/page/product-list",
 				},
 			],
 			right: null,

@@ -1,6 +1,6 @@
 <template>
 	<v-app-bar app color="primary" dark>
-		<v-app-bar-nav-icon @click.stop="toggleMenu"></v-app-bar-nav-icon>
+		<v-app-bar-nav-icon @click="openMenu"></v-app-bar-nav-icon>
 	</v-app-bar>
 </template>
 
@@ -9,8 +9,8 @@ export default {
 	name: "AppBar",
 
 	methods: {
-		toggleMenu() {
-			this.$emit("toggleMenu");
+		openMenu() {
+			this.$emit("openMenu");
 		},
 	},
 };

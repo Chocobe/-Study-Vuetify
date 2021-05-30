@@ -1610,3 +1610,357 @@ $headings: (
   </v-container>
 </template>
 ```
+
+
+
+<br/><hr/><br/>
+
+
+
+## b-03. ``Transition`` 컴포넌트
+
+``<v-fade-transition>``컴포는트를 사용하면 ``router-view``의 화면이 변경될 때, 애니메이션 효과를 줄 수 있습니다.
+
+
+
+<br/><hr/><br/>
+
+
+
+## b-04. ``Menu`` 구현하기
+
+필요한 컴포넌트는 다음과 같습니다.
+
+1. ``<v-navigation-drawer>``
+    * ``<v-app>`` 컴포넌트와 연동하기 위한 컴포넌트
+2. ``<v-divider>``
+    * ``경계선`` 컴포넌트
+3. ``<v-list>``
+    * ``리스트`` Wrapper 컴포넌트
+4. ``<v-list-item>``
+    * ``리스트 항목`` 컴포넌트
+5. ``<v-list-content>``
+    * ``리스트 항목`` 의 ``컨텐츠`` Wrapper 컴포넌트
+7. ``<v-list-item-avatar>``
+    * ``리스트 항목 컨텐츠`` 컴포넌트의 ``아바타`` 컴포넌트
+8. ``<v-list-item-title>``
+    * ``리스트 항목 컨텐츠`` 컴포넌트의 ``제목`` 컴포넌트
+9. ``<v-list-group>``
+    * ``리스트 그룹`` 컴포넌트
+
+<br/>
+
+``메뉴 헤더`` 구현 입니다.
+
+```html
+<template>
+	<v-list-item>
+		<v-list-item-avatar>
+			<v-img src="../../assets/image/moon-menu.jpg"></v-img>
+		</v-list-item-avatar>
+		<v-list-item-content>
+			<v-list-item-title class="text-h6">Chocobe</v-list-item-title>
+			<v-list-item-subtitle>Vuetify v2.4.5</v-list-item-subtitle>
+		</v-list-item-content>
+	</v-list-item>
+</template>
+
+<script>
+export default {
+	name: "DefaultDrawerHeader",
+};
+</script>
+
+<style></style>
+```
+
+<br/>
+
+``메뉴 아이템`` 구현 입니다.
+
+```html
+<template>
+	<v-list-item
+		:to="item.to"
+		link
+		:class="{ purple: item.myCustom }"
+		:active-class="item.myCustom ? 'blue' : 'primary'"
+		class="py-1"
+	>
+		<v-list-item-icon>
+			<v-icon>{{ item.icon }}</v-icon>
+		</v-list-item-icon>
+
+		<v-list-item-content>
+			<v-list-item-title>{{ item.title }}</v-list-item-title>
+		</v-list-item-content>
+	</v-list-item>
+</template>
+
+<script>
+export default {
+	name: "DefaultListItem",
+	props: {
+		item: {
+			type: Object,
+			default: () => {},
+		},
+	},
+};
+</script>
+
+<style></style>
+```
+
+<br/>
+
+``메뉴 그룹`` 구현 입니다.
+
+```html
+<template>
+	<v-list-group :prepend-icon="item.icon">
+		<template v-slot:activator>
+			<v-list-item-content>
+				<v-list-item-title>
+					{{ item.title }}
+				</v-list-item-title>
+			</v-list-item-content>
+		</template>
+
+		<template v-for="(child, index) in item.items">
+			<div :key="index" class="pl-3">
+				<template v-if="child.items">
+					<DefaultListGroup
+						:key="`sub-group-${index}`"
+						:item="child"
+					></DefaultListGroup>
+				</template>
+
+				<template v-else>
+					<DefaultListItem
+						:key="`child-${index}`"
+						:item="child"
+					></DefaultListItem>
+				</template>
+			</div>
+		</template>
+	</v-list-group>
+</template>
+
+<script>
+import DefaultListItem from "@/layouts/default/ListItem.vue";
+
+export default {
+	name: "DefaultListGroup",
+
+	components: {
+		DefaultListItem,
+	},
+
+	props: {
+		item: {
+			type: Object,
+			default: () => {},
+		},
+	},
+};
+</script>
+
+<style></style>
+```
+
+<br/>
+
+``메뉴 그룹``과 ``메뉴 항목``을 묶는 Wrapper 컴포넌트 입니다.
+
+```html
+<template>
+	<v-list dense nav expand>
+		<template v-for="(item, index) in items">
+			<template v-if="item.items">
+				<DefaultListGroup
+					:key="`group-${index}`"
+					:item="item"
+				></DefaultListGroup>
+			</template>
+
+			<template v-else>
+				<DefaultListItem :key="`item-${index}`" :item="item"></DefaultListItem>
+			</template>
+		</template>
+	</v-list>
+</template>
+
+<script>
+import DefaultListItem from "@/layouts/default/ListItem.vue";
+import DefaultListGroup from "@/layouts/default/ListGroup.vue";
+
+export default {
+	name: "DefaultDrawerList",
+
+	components: {
+		DefaultListItem,
+		DefaultListGroup,
+	},
+
+	props: {
+		items: {
+			type: Array,
+			default: () => [],
+		},
+	},
+};
+</script>
+
+<style></style>
+```
+
+<br/>
+
+``최종 메뉴`` 컴포넌트 입니다.
+
+```html
+<template>
+	<v-navigation-drawer
+		v-bind="$attrs"
+		app
+		dark
+		src="../../assets/image/moon-menu.jpg"
+	>
+		<template v-slot:img="imgProps">
+			<v-img v-bind="imgProps" :gradient="gradient"></v-img>
+		</template>
+
+		<DefaultDrawerHeader></DefaultDrawerHeader>
+
+		<v-divider />
+
+		<DefaultDrawerList :items="items"></DefaultDrawerList>
+	</v-navigation-drawer>
+</template>
+
+<script>
+import DefaultDrawerHeader from "@/layouts/default/DrawerHeader.vue";
+import DefaultDrawerList from "@/layouts/default/DrawerList.vue";
+
+export default {
+	name: "DefaultDrawer",
+
+	components: {
+		DefaultDrawerHeader,
+		DefaultDrawerList,
+	},
+
+	data: () => {
+		return {
+			// 메뉴 배경 Gradient
+			gradient: "rgba(0, 0, 0, 0.7), rgba(55, 100, 222, 0.7)",
+
+			// 메뉴 리스트 데이터
+			items: [
+				{
+					title: "Dashboard",
+					icon: "mdi-view-dashboard",
+					to: "/",
+				},
+				{
+					title: "Pages",
+					icon: "mdi-menu",
+					items: [
+						// Authentication
+						{
+							title: "Authentication",
+							icon: "mdi-security",
+							items: [
+								{
+									title: "SignIn",
+									icon: "mdi-login-variant",
+									to: "/authentication/signin",
+								},
+								{
+									title: "SignUp",
+									icon: "mdi-clipboard-account-outline",
+									to: "/authentication/signup",
+								},
+							],
+						},
+
+						// Page
+						{
+							title: "ProductList",
+							icon: "mdi-inbox-full",
+							to: "/page/product-list",
+						},
+					],
+				},
+				{
+					title: "Grid System",
+					icon: "mdi-image",
+					to: "/grid-system",
+				},
+				{
+					title: "Grid List Page",
+					icon: "mdi-view-dashboard",
+					to: "/grid-list-page",
+				},
+				{
+					title: "Breakpoint",
+					icon: "mdi-image",
+					to: "/breakpoint",
+				},
+				{
+					title: "Typography",
+					icon: "mdi-data-matrix-scan",
+					to: "/typography",
+				},
+				{
+					title: "Tables",
+					icon: "mdi-file-table-box-multiple-outline",
+					to: "/tables",
+				},
+				{
+					title: "Buttons",
+					icon: "mdi-gesture-tap-button",
+					to: "/buttons",
+				},
+				{
+					title: "Forms",
+					icon: "mdi-format-float-right",
+					to: "/forms",
+				},
+				{
+					title: "Icons",
+					icon: "mdi-emoticon-lol-outline",
+					to: "/icons",
+				},
+
+				// 추가 연습용 페이지
+				{
+					title: "Breakpoint2",
+					icon: "mdi-basket-minus-outline",
+					to: "/breakpoint2",
+					myCustom: true,
+				},
+				{
+					title: "Slot Props",
+					icon: "mdi-share-variant-outline",
+					to: "/slot-props",
+					myCustom: true,
+				},
+			],
+			right: null,
+		};
+	},
+};
+</script>
+
+<style></style>
+
+```
+
+
+
+<br/><hr/><br/>
+
+
+
