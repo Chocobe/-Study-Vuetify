@@ -55,6 +55,8 @@
 </template>
 
 <script>
+// import "@/styles/overrides.scss";
+
 export default {
 	data: () => ({
 		// 메뉴 (v-navigation-drawer) 상태값

@@ -1,4 +1,4 @@
-# Vuetify 기본
+# Vuetify 기본편
 
 ## ``Vuetify`` 란?
 
@@ -1454,6 +1454,126 @@ Vuetify의 ``라인 차트`` 컴포넌트 입니다.
 <br/>
 
 <img src="./readmeAssets/17-sparkline-01.png" alt="사진: Sparkline" width="700px"><br/>
+
+
+
+<br/><hr/><br/>
+
+
+
+# Vuetify 실전편
+
+## b-01. ``SCSS Variables``
+
+``Vuetify``의 기본 스타일은 ``SCSS Variables``를 사용하여 수정할 수 있습니다.
+
+``UI Framework``의 구조를 깨지 않기 위해서, ``Vuetify``의 기본 스타일을 변경할 때는 필수로 ``SCSS Variables``를 사용해야 합니다.
+
+> [``SCSS Variables``: https://vuetifyjs.com/en/features/sass-variables/](https://vuetifyjs.com/en/features/sass-variables/)
+
+<img src="./readmeAssets/a-01-scss-variables-01.png" alt="사진: SCSS Variables" width="700px"><br/>
+
+<br/>
+
+Vuetify를 ``Vue CLI``를 사용하여 설치 하였다면, 함꼐 설치 되어 있으므로, 추가 환경설정은 필요 없습니다.
+
+<br/>
+
+``SCSS Variables``는 각 ``컴포넌트 API`` 페이지에서 가이드를 하지만, ``SCSS Variables`` 의 ``Variable API`` 페이지에서 ``검색``으로 안내 받을 수 있습니다.
+
+[``Variable API``: https://vuetifyjs.com/en/features/sass-variables/#variable-api](https://vuetifyjs.com/en/features/sass-variables/#variable-api)
+
+<img src="./readmeAssets/a-01-scss-variables-02.png" alt="사진: SCSS Variable 검색" width="700px"><br/>
+
+<br/>
+
+``Vuetify``의 ``SCSS Variables``을 Override 하려면, 다음 조건에 맞는 파일에 작성 해야 합니다.
+
+* ``src/styles 또는 scss 또는 sass/variables.scss`` 경로의 파일에 작성
+
+위 조건에 맞는 파일이 있다면, ``vuetify-loader``가 자동으로 ``SCSS Variables`` 파일로 인식하고 컴파일 합니다.
+
+<br/>
+
+``v-btn`` 컴포넌트의 ``size``를 수정해 보겠습니다.
+
+1. ``SCSS Variables`` 페이지에서 ``v-btn``을 검색합니다.
+
+<img src="./readmeAssets/a-01-scss-variables-03.png" alt="사진: v-btn 검색" width="700px"><br/>
+
+<br/>
+
+2. ``v-btn`` 관련 변수 중, ``size`` 변수를 찾으면 다음과 같습니다.
+
+<img src="./readmeAssets/a-01-scss-variables-04.png" alt="사진: v-btn size" width="700px"><br/>
+
+3. ``src/styles/variables.scss`` 파일을 생서하고, 다음과 같이 작성 합니다.
+
+```scss
+// 경로: @/styles/variables.scss
+
+$btn-sizes: (
+  'x-small': 10,
+  'small': 18,
+  'default': 26,
+  'large': 34,
+  'x-large': 42
+);
+```
+
+<br/>
+
+실행 결과를 확인하면 다음과 같이 버튼의 크기가 작아진 것을 확인할 수 있습니다.
+
+<img src="./readmeAssets/a-01-scss-variables-05.png" alt="사진: SCSS Variables 수정 전" width="500px"><br/>
+
+<img src="./readmeAssets/a-01-scss-variables-06.png" alt="사진: SCSS Variables 수정 후" width="500px"><br/>
+
+<br/>
+
+위의 예시는 ``컴포넌트``별 스타일 수정이었고, Vuetify의 ``Helper Class``의 수정도 가능 합니다.
+
+대표적인 예로 ``Typography``의 ``h1`` 을 수정해 보겠습니다.
+
+1. ``h1``에 대한 ``Helper Class``는 ``Text and typography`` 메뉴에서 ``Helper Class`` 명을 확인 합니다.
+
+<img src="./readmeAssets/a-01-scss-variables-07.png" alt="사진: Typography 페이지" width="500px"><br/>
+
+<br/>
+
+2. ``Typography`` 페이지에서 ``h1 Helper Class`` 명을 확인 합니다.
+
+<img src="./readmeAssets/a-01-scss-variables-08.png" alt="사진: h1" width="500px"><br/>
+
+<br/>
+
+3. ``API 메뉴``의 ``$vuetify`` 페이지에서 ``Helper Class명``인 ``h1``을 검색(Ctrl + F) 합니다.
+
+<img src="./readmeAssets/a-01-scss-variables-09.png" alt="사진: h1 검색" width="700px"><br/>
+
+<br/>
+
+4. ``h1``의 스타일을 가진 ``SCSS 변수명``을 확인하고, ``variables.scss``에 변경할 스타일을 작성 합니다.
+
+```scss
+// 경로: @/styles/variables.scss
+
+$headings: (
+  "h1": (
+    "size": 5rem
+  )
+);
+```
+
+<br/>
+
+변경한 결과, ``96px`` 에서 ``80px``로 변경된 것을 확인할 수 있습니다.
+
+<img src="./readmeAssets/a-01-scss-variables-11.png" alt="h1 font-size 수정 결과" width="500px"><br/>
+
+<br/>
+
+``Vuetify``의 ``UI Framework`` 구조가 깨지지 않도록 이와같은 방법으로 스타일을 수정하는 것이 좋습니다.
 
 
 

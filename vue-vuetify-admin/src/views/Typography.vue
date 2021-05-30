@@ -8,7 +8,7 @@
 					<p class="text-h1">Header 1</p>
 					<p class="text-h2">Header 2</p>
 
-					<p class="text-h3 text-sm-h1">SubTitle 1</p>
+					<!-- <p class="text-h3 text-sm-h1">text-h3 text-sm-h1</p> -->
 
 					<p class="font-weight-black">Font Weight Black</p>
 					<p class="font-weight-thin">Font- Weight Thin</p>
