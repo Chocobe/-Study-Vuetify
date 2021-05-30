@@ -4,52 +4,101 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 const routes = [
+	// Default Layout
 	{
 		path: "/",
-		component: () => import("@/views/Dashboard.vue"),
-	},
-	{
-		path: "/grid-system",
-		component: () => import("@/views/GridSystem.vue"),
-	},
-	{
-		path: "/grid-list-page",
-		component: () => import("@/views/GridListPage.vue"),
-	},
-	{
-		path: "/breakpoint",
-		component: () => import("@/views/Breakpoint.vue"),
-	},
-	{
-		path: "/typography",
-		component: () => import("@/views/Typography.vue"),
-	},
-	{
-		path: "/tables",
-		component: () => import("@/views/Tables.vue"),
-	},
-	{
-		path: "/forms",
-		component: () => import("@/views/Forms.vue"),
-	},
-	{
-		path: "/buttons",
-		component: () => import("@/views/Buttons.vue"),
-	},
-	{
-		path: "/icons",
-		component: () => import("@/views/Icons.vue"),
+		component: () => import("@/layouts/default/Index.vue"),
+		children: [
+			{
+				path: "/",
+				name: "Dashboard",
+				component: () => import("@/views/Dashboard.vue"),
+			},
+			{
+				path: "/grid-system",
+				name: "Grid System",
+				component: () => import("@/views/GridSystem.vue"),
+			},
+			{
+				path: "/grid-list-page",
+				name: "Grid List Page",
+				component: () => import("@/views/GridListPage.vue"),
+			},
+			{
+				path: "/breakpoint",
+				name: "Breakpoint",
+				component: () => import("@/views/Breakpoint.vue"),
+			},
+			{
+				path: "/typography",
+				name: "Typography",
+				component: () => import("@/views/Typography.vue"),
+			},
+			{
+				path: "/tables",
+				name: "Tables",
+				component: () => import("@/views/Tables.vue"),
+			},
+			{
+				path: "/forms",
+				name: "Forms",
+				component: () => import("@/views/Forms.vue"),
+			},
+			{
+				path: "/buttons",
+				name: "Buttons",
+				component: () => import("@/views/Buttons.vue"),
+			},
+			{
+				path: "/icons",
+				name: "Icons",
+				component: () => import("@/views/Icons.vue"),
+			},
+
+			// Breakpoint2
+			{
+				path: "/breakpoint2",
+				name: "Breakpoint2",
+				component: () => import("@/views/Breakpoint2.vue"),
+			},
+			// Slot Props
+			{
+				path: "/slot-props",
+				name: "Slot Props",
+				component: () => import("@/views/SlotPropsPage.vue"),
+			},
+		],
 	},
 
-	// Breakpoint2
+	// Authentication Layout
 	{
-		path: "/breakpoint2",
-		component: () => import("@/views/Breakpoint2.vue"),
+		path: "/authentication",
+		component: () => import("@/layouts/authentication/Index.vue"),
+		children: [
+			{
+				path: "signin",
+				name: "Sign In",
+				component: () => import("@/views/authentication/SignIn.vue"),
+			},
+			{
+				path: "signup",
+				name: "Sign Up",
+				component: () => import("@/views/authentication/SignUp.vue"),
+			},
+		],
 	},
-	// Slot Props
+
+	// Page Layout
 	{
-		path: "/slot-props",
-		component: () => import("@/views/SlotPropsPage.vue"),
+		path: "/page",
+		component: () => import("@/layouts/page/Index.vue"),
+		children: [
+			{
+				path: "product-list",
+				name: "Product List",
+				component: () => import("@/views/page/ProductList.vue"),
+			},
+		],
 	},
 ];
 
