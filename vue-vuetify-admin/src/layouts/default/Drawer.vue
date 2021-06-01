@@ -94,7 +94,18 @@ export default {
 				{
 					title: "Tables",
 					icon: "mdi-file-table-box-multiple-outline",
-					to: "/tables",
+					items: [
+						{
+							title: "BasicTable",
+							icon: "mdi-table",
+							to: "/tables/basic-tables",
+						},
+						{
+							title: "AppTable",
+							icon: "mdi-table",
+							to: "/tables/app-tables",
+						},
+					],
 				},
 				{
 					title: "Buttons",
@@ -104,7 +115,18 @@ export default {
 				{
 					title: "Forms",
 					icon: "mdi-format-float-right",
-					to: "/forms",
+					items: [
+						{
+							title: "AppForm",
+							icon: "mdi-format-float-down",
+							to: "/forms/app-forms",
+						},
+						{
+							title: "ValidationForm",
+							icon: "mdi-format-float-up",
+							to: "/forms/validation-forms",
+						},
+					],
 				},
 				{
 					title: "Icons",
@@ -124,6 +146,12 @@ export default {
 					icon: "mdi-share-variant-outline",
 					to: "/slot-props",
 					myCustom: true,
+				},
+
+				{
+					title: "TransparentWrapperPage",
+					icon: "mdi-cog",
+					to: "/practice/transparent-wrapper-page",
 				},
 			],
 			right: null,

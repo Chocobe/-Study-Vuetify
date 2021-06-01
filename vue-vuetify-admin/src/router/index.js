@@ -35,16 +35,6 @@ const routes = [
 				component: () => import("@/views/Typography.vue"),
 			},
 			{
-				path: "/tables",
-				name: "Tables",
-				component: () => import("@/views/Tables.vue"),
-			},
-			{
-				path: "/forms",
-				name: "Forms",
-				component: () => import("@/views/Forms.vue"),
-			},
-			{
 				path: "/buttons",
 				name: "Buttons",
 				component: () => import("@/views/Buttons.vue"),
@@ -66,6 +56,40 @@ const routes = [
 				path: "/slot-props",
 				name: "Slot Props",
 				component: () => import("@/views/SlotPropsPage.vue"),
+			},
+		],
+	},
+
+	// Tables
+	{
+		path: "/tables",
+		name: "Tables",
+		component: () => import("@/layouts/default/Index.vue"),
+		children: [
+			{
+				path: "basic-tables",
+				component: () => import("@/views/tables/BasicTables.vue"),
+			},
+			{
+				path: "app-tables",
+				component: () => import("@/views/tables/AppTables.vue"),
+			},
+		],
+	},
+
+	// Forms
+	{
+		path: "/forms",
+		name: "Forms",
+		component: () => import("@/layouts/default/Index.vue"),
+		children: [
+			{
+				path: "app-forms",
+				component: () => import("@/views/forms/AppForms.vue"),
+			},
+			{
+				path: "validation-forms",
+				component: () => import("@/views/forms/ValidationForms.vue"),
 			},
 		],
 	},
@@ -97,6 +121,18 @@ const routes = [
 				path: "product-list",
 				name: "Product List",
 				component: () => import("@/views/page/ProductList.vue"),
+			},
+		],
+	},
+
+	// MyInputPage
+	{
+		path: "/practice",
+		component: () => import("@/layouts/default/Index.vue"),
+		children: [
+			{
+				path: "transparent-wrapper-page",
+				component: () => import("@/views/TransparentWrapperPage.vue"),
 			},
 		],
 	},

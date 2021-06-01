@@ -1,6 +1,8 @@
 <template>
 	<v-main>
-		<router-view></router-view>
+		<v-fade-transition mode="out-in">
+			<router-view></router-view>
+		</v-fade-transition>
 	</v-main>
 </template>
 

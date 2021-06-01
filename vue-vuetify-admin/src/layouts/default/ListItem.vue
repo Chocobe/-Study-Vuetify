@@ -3,7 +3,7 @@
 		:to="item.to"
 		link
 		:class="{ purple: item.myCustom }"
-		:active-class="item.myCustom ? 'blue' : 'primary'"
+		:active-class="item.myCustom ? 'blue' : 'primary black--text'"
 		class="py-1"
 	>
 		<v-list-item-icon>
