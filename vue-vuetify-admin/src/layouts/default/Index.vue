@@ -1,10 +1,10 @@
 <template>
 	<v-app>
 		<!-- 헤더 -->
-		<DefaultAppBar @openMenu="openMenu"></DefaultAppBar>
+		<DefaultAppBar></DefaultAppBar>
 
 		<!-- 메뉴 -->
-		<DefaultDrawer v-model="isOpenMenu"></DefaultDrawer>
+		<DefaultDrawer></DefaultDrawer>
 
 		<!-- 컨텐츠 -->
 		<DefaultView></DefaultView>
@@ -23,18 +23,6 @@ export default {
 		DefaultAppBar,
 		DefaultDrawer,
 		DefaultView,
-	},
-
-	data: () => ({
-		// 메뉴 (v-navigation-drawer) 상태값
-		isOpenMenu: true,
-	}),
-
-	methods: {
-		// 메뉴 토글 함수
-		openMenu() {
-			this.isOpenMenu = !this.isOpenMenu;
-		},
 	},
 };
 </script>
